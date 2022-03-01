@@ -1,3 +1,8 @@
+/* For testing only */
+.bordered {
+  border: 5px solid red;
+}
+
 /* Imports */
 @font-face {
   font-family: "tbf";
@@ -8,10 +13,10 @@
 .body,
 html {
   overflow-x: hidden;
-  font-family: "tbf";
   color: rgb(232, 232, 232);
   background: rgb(15, 15, 12);
 }
+
 /* Page Background */
 #page-background {
   position: fixed;
@@ -82,4 +87,15 @@ nav #home-link-sm {
   nav div.nav-links {
     padding: 0;
   }
+}
+/* Text */
+h1,
+h2,
+h3 {
+  font-family: "tbf";
+}
+
+/* Main */
+section#main {
+  margin: 2rem;
 }
