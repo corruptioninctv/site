@@ -10,10 +10,7 @@ html {
   overflow-x: hidden;
   font-family: "tbf";
   color: rgb(232, 232, 232);
-  background: black;
-  /* background: url("./assets/background/background.gif"), black;
-  background-position: left;
-  background-size: cover; */
+  background: rgb(15, 15, 12);
 }
 /* Page Background */
 #page-background {
