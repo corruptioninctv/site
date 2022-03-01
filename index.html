@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Corrpution Inc</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Styles -->
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <video autoplay muted loop id="page-background">
+        <source src="./assets/background/background.mp4" type="video/mp4">
+    </video>
+
+    <nav>
+        <a href="" id="home-link-sm">Corruption Inc</a>
+        <div class="nav-links">
+            <a href="./members/" id="memberslink" class="active">Members</a>
+            <a href="./contact/" id="contactlink">Contact</a>
+            <a href="./" id="home-link">Corruption Inc</a>
+            <a href="./watch/" id="watchlink">Watch</a>
+            <a href="./community" id="communitylink">Community</a>
+        </div>
+    </nav>
+
+    <!-- Page Script -->
+    <script>
+        let links = document.querySelectorAll('a')
+        links.forEach((link) => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                alert(`link will navigate to ${e.toElement.parentElement.href}.`)
+                // window.location.href = e.toElement.parentElement.href;
+            })
+        })
+    </script>
+</body>
+
+</html>

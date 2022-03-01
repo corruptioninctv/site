@@ -1,0 +1,88 @@
+/* Imports */
+@font-face {
+  font-family: "tbf";
+  src: url("./assets/fonts/theboldfont.ttf");
+}
+
+/* Body */
+.body,
+html {
+  overflow-x: hidden;
+  font-family: "tbf";
+  color: rgb(232, 232, 232);
+  background: black;
+  /* background: url("./assets/background/background.gif"), black;
+  background-position: left;
+  background-size: cover; */
+}
+/* Page Background */
+#page-background {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -10;
+}
+
+/* Navbar */
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: auto;
+  padding-top: 5px;
+  background-color: var(--neutral);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 0px 5px 5px 0px var(--neutral);
+}
+nav div.nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 1rem 0 0 0;
+  width: fit-content;
+}
+nav div.nav-links a {
+  font-size: 12pt;
+  padding: 0.7rem;
+  height: fit-content;
+  color: rgb(232, 232, 232);
+  text-decoration: none;
+}
+nav div.nav-links a.active {
+  border-bottom: 0.3rem solid rgb(232, 232, 232);
+  padding-bottom: 0.4rem !important;
+}
+nav #home-link {
+  font-size: 22pt;
+  display: block;
+  color: var(--color);
+  padding: 0rem 5vw;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+nav #home-link-sm {
+  font-size: 22pt;
+  display: none;
+  color: var(--color);
+  padding-top: 1rem;
+  text-decoration: none !important;
+}
+@media screen and (max-width: 760px) {
+  nav #home-link-sm {
+    display: block;
+  }
+  nav #home-link {
+    display: none;
+  }
+  nav div.nav-links {
+    padding: 0;
+  }
+}
