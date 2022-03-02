@@ -15,6 +15,8 @@ html {
   overflow-x: hidden;
   color: rgb(232, 232, 232);
   background: rgb(15, 15, 12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 /* Page Background */
@@ -56,6 +58,7 @@ nav div.nav-links a {
   padding: 0.7rem;
   height: fit-content;
   color: rgb(232, 232, 232);
+  font-family: "tbf";
   text-decoration: none;
 }
 nav div.nav-links a.active {
@@ -64,6 +67,7 @@ nav div.nav-links a.active {
 }
 nav #home-link {
   font-size: 22pt;
+  font-family: "tbf";
   display: block;
   color: var(--color);
   padding: 0rem 5vw;
@@ -72,6 +76,7 @@ nav #home-link {
 }
 nav #home-link-sm {
   font-size: 22pt;
+  font-family: "tbf";
   display: none;
   color: var(--color);
   padding-top: 1rem;
@@ -94,8 +99,40 @@ h2,
 h3 {
   font-family: "tbf";
 }
+.text-center {
+  text-align: center;
+}
+.text-start {
+  text-align: start;
+}
+.text-end {
+  text-align: end;
+}
 
 /* Main */
-section#main {
-  margin: 2rem;
+/* section#main {
+
+} */
+@media (max-width: 768px) {
+  section#main {
+    margin: 5rem 2vw;
+  }
+}
+
+@media (min-width: 768px) {
+  section#main {
+    margin: 5rem 5vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  section#main {
+    margin: 5rem 15vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  section#main {
+    margin: 5rem 20vw;
+  }
 }
