@@ -37,44 +37,23 @@
         </div>
     </nav>
 
-    <section id="main" class="bordered text-center">
+    <section id="main" class="text-center">
         <div>
-            <h1>Meet the Team</h1>
+            <h1 class="title">Meet the Founders</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus tenetur nostrum, animi similique
                 obcaecati totam id rem commodi dicta quia repellendus, est et! Soluta sunt aut quae dolorum fugit ut.
             </p>
+            <div class="member-selection">
+                <a id="member-itsfood" class="active"><img src="./profiles/itsfood.png"></a>
+                <a id="member-alien"><img src="./profiles/alienislive.png"></a>
+                <a id="member-pvppy"><img src="./profiles/pvppy.png"></a>
+                <a id="member-freddie"><img src="./profiles/freddie.png"></a>
+                <a id="member-nic"><img src="./profiles/nic.png"></a>
+            </div>
         </div>
-        <div>
-            <h1>Founders</h1>
-            <p>Meet the five founders of Corruption Inc</p>
     </section>
     <div class="member-container">
-        <div class="member-item">
-            <h2 class="member-name">itsfood</h2>
-            <img src="./profiles/itsfood.png" alt="itsfood's profile picture" class="member-image">
-            <a href="#" class="member-action">View</a>
-        </div>
-        <div class="member-item">
-            <h2 class="member-name">ALIENisLIVE</h2>
-            <img src="./profiles/alienislive.png" alt="itsfood's profile picture" class="member-image">
-            <a href="#" class="member-action">View</a>
-        </div>
-        <div class="member-item">
-            <h2 class="member-name">Pvppyspit</h2>
-            <img src="./profiles/pvppy.png" alt="itsfood's profile picture" class="member-image">
-            <a href="#" class="member-action">View</a>
-        </div>
-        <div class="member-item">
-            <h2 class="member-name">Freddie</h2>
-            <img src="./profiles/freddie.png" alt="itsfood's profile picture" class="member-image">
-            <a href="#" class="member-action">View</a>
-        </div>
-        <div class="member-item">
-            <h2 class="member-name">Nic</h2>
-            <img src="./profiles/nic.png" alt="itsfood's profile picture" class="member-image">
-            <a href="#" class="member-action">View</a>
-        </div>
-    </div>
+
     </div>
 
     <!-- GSAP -->
@@ -87,7 +66,7 @@
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <!-- Page Linking -->
     <script>
-        let links = document.querySelectorAll('a')
+        let links = document.querySelectorAll('a[href]')
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
