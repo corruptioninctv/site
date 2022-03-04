@@ -1,0 +1,47 @@
+{
+  "member": {
+    "itsfood": {
+      "name": "itsfood",
+      "image": "./characters/itsfood.png",
+      "about": "About me here",
+      "bullets": [
+        "Video Editor",
+        "Designer",
+        "Web Developer",
+        "Podcast Member"
+      ],
+      "website": "https://itsfood.xyz/"
+    },
+    "alien": {
+      "name": "ALIENisLIVE",
+      "image": "./characters/alienislive.png",
+      "about": "About me here",
+      "bullets": [
+        "Rapper/Producer",
+        "Amateur Voice Actor",
+        "Content Creator",
+        "Podcast Creator",
+        "Video Editor"
+      ],
+      "websie": "https://twitch.tv/ALIENisSCARED"
+    },
+    "pvppy": {
+      "name": "pvppyspit",
+      "image": "./characters/pvppy.png",
+      "about": "About me here",
+      "websie": "https://twitch.tv/pvppyspit"
+    },
+    "freddie": {
+      "name": "superfreddie_",
+      "image": "./characters/freddie.png",
+      "about": "About me here",
+      "websie": "https://www.twitch.tv/superfreddie_"
+    },
+    "nic": {
+      "name": "TwoDyslexic",
+      "image": "./characters/nic.png",
+      "about": "About me here",
+      "websie": "https://www.twitch.tv/nic2496"
+    }
+  }
+}

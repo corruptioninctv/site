@@ -27,11 +27,11 @@
     </video>
 
     <nav>
-        <a href="../" id="home-link-sm">Corruption Inc</a>
+        <a href="../" id="home-link-sm" class="text-crt">Corruption Inc</a>
         <div class="nav-links">
             <a href="../members/" id="memberslink" class="active">Members</a>
             <a href="../contact/" id="contactlink">Contact</a>
-            <a href="../" id="home-link">Corruption Inc</a>
+            <a href="../" id="home-link" class="text-crt">Corruption Inc</a>
             <a href="../watch/" id="watchlink">Watch</a>
             <a href="../community" id="communitylink">Community</a>
         </div>
@@ -44,16 +44,23 @@
                 obcaecati totam id rem commodi dicta quia repellendus, est et! Soluta sunt aut quae dolorum fugit ut.
             </p>
             <div class="member-selection">
-                <a id="member-itsfood" class="active"><img src="./profiles/itsfood.png"></a>
-                <a id="member-alien"><img src="./profiles/alienislive.png"></a>
-                <a id="member-pvppy"><img src="./profiles/pvppy.png"></a>
-                <a id="member-freddie"><img src="./profiles/freddie.png"></a>
-                <a id="member-nic"><img src="./profiles/nic.png"></a>
+                <a onclick="chooseMember(this)" id="member-itsfood"><img src="./profiles/itsfood.png"></a>
+                <a onclick="chooseMember(this)" id="member-alien"><img src="./profiles/alienislive.jpg"></a>
+                <a onclick="chooseMember(this)" id="member-pvppy"><img src="./profiles/pvppy.png"></a>
+                <a onclick="chooseMember(this)" id="member-freddie"><img src="./profiles/freddie.png"></a>
+                <a onclick="chooseMember(this)" id="member-nic"><img src="./profiles/nic.png"></a>
             </div>
         </div>
     </section>
     <div class="member-container">
-
+        <div class="member-display">
+            <h1 id="member-name"><i>choose your character</i></h1>
+            <p id="member-about"></p>
+            <div id="member-info">
+                <img id="member-image">
+                <ul id="member-bullets"></ul>
+            </div>
+        </div>
     </div>
 
     <!-- GSAP -->
@@ -87,20 +94,56 @@
             })
         })
     </script>
-    <!-- Swiper -->
-    <!-- <script>
-        const swiper = new Swiper('.swiper', {
-            effect: "cards",
-            cardsEffect: {
-                slideShadows: true
-            },
-            grabCursor: true,
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true,
-            },
-        });
-    </script> -->
+    <!-- Member Selection -->
+    <script>
+        let memberInfo;
+        const name = document.getElementById('member-name'),
+            about = document.getElementById('member-about'),
+            profile = document.getElementById('member-image'),
+            bullets = document.getElementById('member-bullets');
+
+        fetch("data.json")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                memberInfo = data;
+                console.log(memberInfo)
+            })
+
+        function chooseMember(e) {
+            let data;
+            switch (e.id) {
+                case "member-itsfood":
+                    data = memberInfo.member.itsfood
+                    break;
+                case "member-alien":
+                    data = memberInfo.member.alien
+                    break;
+                case "member-pvppy":
+                    data = memberInfo.member.pvppy
+                    break;
+                case "member-freddie":
+                    data = memberInfo.member.freddie
+                    break;
+                case "member-nic":
+                    data = memberInfo.member.nic
+                    break;
+            }
+            console.log(data)
+
+            name.textContent = data.name;
+            about.textContent = data.about;
+            profile.src = data.image;
+
+            bullets.querySelectorAll('*').forEach(n => n.remove());
+            data.bullets.forEach((item) => {
+                let bullet = document.createElement('li');
+                bullet.textContent = item;
+                bullets.appendChild(bullet)
+            })
+        }
+    </script>
 </body>
 
 </html>
