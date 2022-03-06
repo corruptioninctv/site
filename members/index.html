@@ -43,7 +43,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus tenetur nostrum, animi similique
                 obcaecati totam id rem commodi dicta quia repellendus, est et! Soluta sunt aut quae dolorum fugit ut.
             </p>
-            <div class="member-selection">
+            <div id="member-selection">
                 <a onclick="chooseMember(this)" id="member-itsfood"><img src="./profiles/itsfood.png"></a>
                 <a onclick="chooseMember(this)" id="member-alien"><img src="./profiles/alienislive.jpg"></a>
                 <a onclick="chooseMember(this)" id="member-pvppy"><img src="./profiles/pvppy.png"></a>
@@ -54,10 +54,10 @@
     </section>
     <div class="member-container">
         <div class="member-display">
-            <h1 id="member-name"><i>choose your character</i></h1>
-            <p id="member-about"></p>
+            <img id="member-image">
             <div id="member-info">
-                <img id="member-image">
+                <h1 id="member-name"><i>choose your character</i></h1>
+                <p id="member-about"></p>
                 <ul id="member-bullets"></ul>
             </div>
         </div>
@@ -100,7 +100,8 @@
         const name = document.getElementById('member-name'),
             about = document.getElementById('member-about'),
             profile = document.getElementById('member-image'),
-            bullets = document.getElementById('member-bullets');
+            bullets = document.getElementById('member-bullets'),
+            selector = document.getElementById('member-selection')
 
         fetch("data.json")
             .then(response => {
@@ -131,17 +132,22 @@
                     break;
             }
             console.log(data)
+            try { selector.querySelector('a.active').classList.remove('active') }
+            finally {
+                
 
-            name.textContent = data.name;
-            about.textContent = data.about;
-            profile.src = data.image;
+                name.textContent = data.name;
+                about.textContent = data.about;
+                profile.src = data.image;
 
-            bullets.querySelectorAll('*').forEach(n => n.remove());
-            data.bullets.forEach((item) => {
-                let bullet = document.createElement('li');
-                bullet.textContent = item;
-                bullets.appendChild(bullet)
-            })
+                bullets.querySelectorAll('*').forEach(n => n.remove());
+                data.bullets.forEach((item) => {
+                    let bullet = document.createElement('li');
+                    bullet.textContent = item;
+                    bullets.appendChild(bullet)
+                })
+                e.classList.add('active')
+            }
         }
     </script>
 </body>

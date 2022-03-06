@@ -137,34 +137,35 @@ section#main {
 }
 
 /* Members */
-div.member-selection {
+div#member-selection {
   display: flex;
   flex-direction: row;
   align-items: center;
   max-width: fit-content;
   margin: auto;
 }
-div.member-selection a {
+div#member-selection a {
   margin: 0 5px;
 }
-div.member-selection img {
+div#member-selection img {
   aspect-ratio: 1;
   min-width: 48px;
   max-width: 96px;
   width: 5vw;
   border-radius: 50%;
+  transition: 300ms ease;
 }
-div.member-selection a.active img {
+div#member-selection a.active img {
   border-radius: 15%;
 }
 div.member-container {
   position: relative;
-  min-width: 450px;
-  min-height: 337.5px;
-  width: 60vw;
-  height: 45vw;
+  min-width: calc(200 * (4 / 3));
+  min-height: 200px;
+  width: calc(50vw * (4 / 3));
+  height: 50vw;
   padding: 2em;
-  margin: 0 auto;
+  margin: 5px auto 15px auto;
   background: rgb(232, 232, 232);
   border-radius: 50% / 10%;
   color: rgb(15, 15, 12) !important;
@@ -183,19 +184,22 @@ div.member-container:before {
   z-index: -2;
 }
 div.member-display {
+  /* overflow: hidden; */
+  clear: both;
   /* border: 2px solid red; */
   width: 100%;
   height: 100%;
   z-index: 3;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 
   animation: stereoText 1.6s infinite;
 }
 div.member-display::before {
+  /* overflow: hidden; */
   content: " ";
   display: block;
   position: absolute;
@@ -216,6 +220,7 @@ div.member-display::before {
   pointer-events: none;
 }
 div.member-display::after {
+  /* overflow: hidden !important; */
   content: " ";
   display: block;
   position: absolute;
@@ -234,13 +239,16 @@ div.member-display h1#member-name,
 div.member-display p#member-about {
   margin: 0;
 }
-div#member-info img#member-image {
-  width: 50%;
+div img#member-image {
+  position: absolute;
+  z-index: 0;
+  height: 90%;
+  opacity: 0.5;
 }
 div.member-display div#member-info {
   margin-top: 5px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 /* Swiper */
