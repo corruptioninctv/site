@@ -158,7 +158,7 @@ div#member-selection img {
 div#member-selection a.active img {
   border-radius: 15%;
 }
-div.member-container {
+div#member-container {
   position: relative;
   min-width: calc(200 * (4 / 3));
   min-height: 200px;
@@ -172,7 +172,7 @@ div.member-container {
   text-align: center;
   text-indent: 0.1em;
 }
-div.member-container:before {
+div#member-container:before {
   content: "";
   position: absolute;
   top: 8%;
@@ -183,7 +183,7 @@ div.member-container:before {
   border-radius: 5% / 50%;
   z-index: -2;
 }
-div.member-display {
+div#member-display {
   /* overflow: hidden; */
   clear: both;
   /* border: 2px solid red; */
@@ -195,10 +195,9 @@ div.member-display {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  animation: stereoText 1.6s infinite;
+  /* animation: flicker 0.15s infinite; */
 }
-div.member-display::before {
+div#member-display::before {
   /* overflow: hidden; */
   content: " ";
   display: block;
@@ -218,8 +217,9 @@ div.member-display::before {
   z-index: 2;
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
+  animation: flicker 0.15s infinite;
 }
-div.member-display::after {
+div#member-display::after {
   /* overflow: hidden !important; */
   content: " ";
   display: block;
@@ -228,16 +228,20 @@ div.member-display::after {
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(18, 16, 16, 0.1);
   opacity: 0;
   z-index: 2;
   pointer-events: none;
-  animation: flicker 0.15s infinite;
 }
 
-div.member-display h1#member-name,
-div.member-display p#member-about {
+div#member-display h1#member-name {
+  font-style: italic;
+}
+
+div#member-display h1#member-name,
+div#member-display p#member-about,
+div#member-display ul#member-bullets {
   margin: 0;
+  z-index: 2;
 }
 div img#member-image {
   position: absolute;
@@ -245,7 +249,7 @@ div img#member-image {
   height: 90%;
   opacity: 0.5;
 }
-div.member-display div#member-info {
+div#member-display div#member-info {
   margin-top: 5px;
   display: flex;
   flex-direction: column;

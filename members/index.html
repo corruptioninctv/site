@@ -52,8 +52,8 @@
             </div>
         </div>
     </section>
-    <div class="member-container">
-        <div class="member-display">
+    <div id="member-container">
+        <div id="member-display">
             <img id="member-image">
             <div id="member-info">
                 <h1 id="member-name"><i>choose your character</i></h1>
@@ -76,18 +76,18 @@
         let links = document.querySelectorAll('a[href]')
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
-                e.preventDefault();
+                e.preventDefault()
                 // Test if page exists
                 var request;
                 if (window.XMLHttpRequest) {
-                    request = new XMLHttpRequest();
+                    request = new XMLHttpRequest()
                 } else {
-                    request = new ActiveXObject("Microsoft.XMLHTTP");
+                    request = new ActiveXObject("Microsoft.XMLHTTP")
                 }
-                request.open('GET', `${e.toElement.href}`, false);
+                request.open('GET', `${e.toElement.href}`, false)
                 request.send();
                 if (request.status !== 404) {
-                    window.location.href = e.toElement.href;
+                    window.location.href = e.toElement.href
                 } else {
                     alert(`link will navigate to ${e.toElement.href}.`)
                 }
@@ -101,11 +101,13 @@
             about = document.getElementById('member-about'),
             profile = document.getElementById('member-image'),
             bullets = document.getElementById('member-bullets'),
-            selector = document.getElementById('member-selection')
+            selector = document.getElementById('member-selection'),
+            display = document.getElementById('member-display'),
+            container = document.getElementById('member-container');
 
         fetch("data.json")
             .then(response => {
-                return response.json();
+                return response.json()
             })
             .then(data => {
                 memberInfo = data;
@@ -131,22 +133,35 @@
                     data = memberInfo.member.nic
                     break;
             }
-            console.log(data)
-            try { selector.querySelector('a.active').classList.remove('active') }
+            try {
+                container.style.opacity = 0
+                selector.querySelector('a.active').classList.remove('active')
+            }
             finally {
-                
+                try {
+                    name.textContent = data.name
+                    about.textContent = data.about
+                    profile.src = data.image
 
-                name.textContent = data.name;
-                about.textContent = data.about;
-                profile.src = data.image;
-
-                bullets.querySelectorAll('*').forEach(n => n.remove());
-                data.bullets.forEach((item) => {
-                    let bullet = document.createElement('li');
-                    bullet.textContent = item;
-                    bullets.appendChild(bullet)
-                })
-                e.classList.add('active')
+                    bullets.querySelectorAll('*').forEach(n => n.remove())
+                    data.bullets.forEach((item) => {
+                        let bullet = document.createElement('li')
+                        bullet.textContent = item
+                        bullets.appendChild(bullet)
+                    })
+                }
+                catch {
+                    (oops) => {
+                        console.log('Error:', oops)
+                        alert('There was an issue loading this member.')
+                    }
+                }
+                finally {
+                    setTimeout(() => {
+                        e.classList.add('active')
+                        container.style.opacity = 1
+                    }, 1000);
+                }
             }
         }
     </script>
