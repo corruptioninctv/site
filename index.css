@@ -11,8 +11,8 @@
 
 /* Utilities */
 .hidden {
-  display: none;
-  overflow: none;
+  display: none !important;
+  overflow: none !important;
 }
 
 /* Text */
