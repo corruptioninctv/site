@@ -197,9 +197,17 @@ div#member-transition {
   height: 80vh;
   padding: 2em;
   margin: 5px auto 15px auto;
+  /* overflow: hidden; */
   border-radius: 50% / 10%;
-  background-image: url("./assets/background/channelstatic.mp4");
-  color: rgb(15, 15, 12) !important;
+  background: lime;
+  /* background-image: url("./assets/background/channelstatic.mp4"); */
+  /* background-size: cover; */
+  background-image: repeating-radial-gradient(
+    circle at 0% 50%,
+    white,
+    black 0.00085px
+  );
+  animation: tv-static 5s linear infinite;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -211,14 +219,22 @@ div#member-transition:before {
   bottom: 8%;
   right: -4%;
   left: -4%;
+  /* overflow: hidden; */
   background: inherit;
   border-radius: 5% / 50%;
   z-index: -2;
 }
+/* div#member-transition video {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  z-index: -2;
+} */
 h1#transition-name {
   font-size: 24pt;
   font-style: italic;
   color: rgb(232, 232, 232);
+  z-index: 2;
 }
 div#member-display {
   /* overflow: hidden; */
@@ -486,5 +502,14 @@ div#member-display div#member-info {
   }
   100% {
     opacity: 0.24387;
+  }
+}
+
+@keyframes tv-static {
+  from {
+    background-size: 100% 100%;
+  }
+  to {
+    background-size: 200% 200%;
   }
 }
