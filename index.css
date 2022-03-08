@@ -9,6 +9,12 @@
   src: url("./assets/fonts/theboldfont.ttf");
 }
 
+/* Utilities */
+.hidden {
+  display: none;
+  overflow: none;
+}
+
 /* Text */
 h1,
 h2,
@@ -162,8 +168,8 @@ div#member-container {
   position: relative;
   min-width: calc(200 * (4 / 3));
   min-height: 200px;
-  width: calc(50vw * (4 / 3));
-  height: 50vw;
+  width: calc(80vh * (4 / 3));
+  height: 80vh;
   padding: 2em;
   margin: 5px auto 15px auto;
   background: rgb(232, 232, 232);
@@ -182,6 +188,37 @@ div#member-container:before {
   background: inherit;
   border-radius: 5% / 50%;
   z-index: -2;
+}
+div#member-transition {
+  position: relative;
+  min-width: calc(200 * (4 / 3));
+  min-height: 200px;
+  width: calc(80vh * (4 / 3));
+  height: 80vh;
+  padding: 2em;
+  margin: 5px auto 15px auto;
+  border-radius: 50% / 10%;
+  background-image: url("./assets/background/channelstatic.mp4");
+  color: rgb(15, 15, 12) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#member-transition:before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  right: -4%;
+  left: -4%;
+  background: inherit;
+  border-radius: 5% / 50%;
+  z-index: -2;
+}
+h1#transition-name {
+  font-size: 24pt;
+  font-style: italic;
+  color: rgb(232, 232, 232);
 }
 div#member-display {
   /* overflow: hidden; */

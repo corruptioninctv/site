@@ -56,20 +56,26 @@
         let links = document.querySelectorAll('a[href]')
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
-                e.preventDefault();
+                e.preventDefault()
+                var link;
+                if (typeof e.explicitOriginalTarget === "undefined") {
+                    link = e.toElement.href
+                } else {
+                    link = e.explicitOriginalTarget.href
+                }
                 // Test if page exists
                 var request;
                 if (window.XMLHttpRequest) {
-                    request = new XMLHttpRequest();
+                    request = new XMLHttpRequest()
                 } else {
-                    request = new ActiveXObject("Microsoft.XMLHTTP");
+                    request = new ActiveXObject("Microsoft.XMLHTTP")
                 }
-                request.open('GET', `${e.toElement.href}`, false);
+                request.open('GET', `${link}`, false)
                 request.send();
                 if (request.status !== 404) {
-                    window.location.href = e.toElement.href;
+                    window.location.href = link
                 } else {
-                    alert(`link will navigate to ${e.toElement.href}.`)
+                    alert(`link will navigate to ${link}.`)
                 }
             })
         })

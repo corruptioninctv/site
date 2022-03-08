@@ -44,7 +44,7 @@
                 obcaecati totam id rem commodi dicta quia repellendus, est et! Soluta sunt aut quae dolorum fugit ut.
             </p>
             <div id="member-selection">
-                <a onclick="chooseMember(this)" id="member-itsfood"><img src="./profiles/itsfood.png"></a>
+                <a onclick="chooseMember(this)" id="member-itsfood"><img src="./profiles/itsfood.jpg"></a>
                 <a onclick="chooseMember(this)" id="member-alien"><img src="./profiles/alienislive.jpg"></a>
                 <a onclick="chooseMember(this)" id="member-pvppy"><img src="./profiles/pvppy.png"></a>
                 <a onclick="chooseMember(this)" id="member-freddie"><img src="./profiles/freddie.png"></a>
@@ -62,6 +62,9 @@
             </div>
         </div>
     </div>
+    <div id="member-transition" class="hidden">
+        <h1 id="transition-name">scanning</h1>
+    </div>
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
@@ -77,6 +80,12 @@
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
                 e.preventDefault()
+                var link;
+                if (typeof e.explicitOriginalTarget === "undefined") {
+                    link = e.toElement.href
+                } else {
+                    link = e.explicitOriginalTarget.href
+                }
                 // Test if page exists
                 var request;
                 if (window.XMLHttpRequest) {
@@ -84,12 +93,12 @@
                 } else {
                     request = new ActiveXObject("Microsoft.XMLHTTP")
                 }
-                request.open('GET', `${e.toElement.href}`, false)
+                request.open('GET', `${link}`, false)
                 request.send();
                 if (request.status !== 404) {
-                    window.location.href = e.toElement.href
+                    window.location.href = link
                 } else {
-                    alert(`link will navigate to ${e.toElement.href}.`)
+                    alert(`link will navigate to ${link}.`)
                 }
             })
         })
@@ -103,7 +112,8 @@
             bullets = document.getElementById('member-bullets'),
             selector = document.getElementById('member-selection'),
             display = document.getElementById('member-display'),
-            container = document.getElementById('member-container');
+            container = document.getElementById('member-container'),
+            transition = document.getElementById('member-transition');
 
         fetch("data.json")
             .then(response => {
@@ -114,7 +124,10 @@
                 console.log(memberInfo)
             })
 
+        let currentSelection;
         function chooseMember(e) {
+            if (currentSelection == e.id) return;
+            currentSelection = e.id
             let data;
             switch (e.id) {
                 case "member-itsfood":
@@ -134,7 +147,12 @@
                     break;
             }
             try {
-                container.style.opacity = 0
+                container.classList.add('hidden')
+                try {
+                    transition.classList.remove('hidden')
+                } catch (e) {
+                    console.log(e)
+                }
                 selector.querySelector('a.active').classList.remove('active')
             }
             finally {
@@ -159,8 +177,9 @@
                 finally {
                     setTimeout(() => {
                         e.classList.add('active')
-                        container.style.opacity = 1
-                    }, 1000);
+                        transition.classList.add('hidden')
+                        container.classList.remove('hidden')
+                    }, 600);
                 }
             }
         }
