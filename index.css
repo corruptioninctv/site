@@ -34,7 +34,7 @@ h3 {
   font-size: 32pt;
 }
 .text-crt {
-  animation: distort 1.6s infinite;
+  animation: stereoText 1.6s infinite;
 }
 
 /* Body */
@@ -200,17 +200,25 @@ div#member-transition {
   /* overflow: hidden; */
   border-radius: 50% / 10%;
   background: lime;
-  /* background-image: url("./assets/background/channelstatic.mp4"); */
-  /* background-size: cover; */
-  background-image: repeating-radial-gradient(
-    circle at 0% 50%,
-    white,
-    black 0.00085px
-  );
-  animation: tv-static 5s linear infinite;
+  background-image: repeating-linear-gradient(white, black 5px);
+  animation: tv-static 0.5s linear infinite;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.safari div#member-transition {
+  background-image: url("./assets/background/channelstatic.mp4") !important;
+  background-size: cover !important;
+  animation: none !important;
+}
+@media (orientation: portrait) {
+  div#member-transition,
+  div#member-container {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    width: calc(50vw * (4 / 3)) !important;
+    height: 50vw !important;
+  }
 }
 div#member-transition:before {
   content: "";
@@ -231,7 +239,7 @@ div#member-transition:before {
   z-index: -2;
 } */
 h1#transition-name {
-  font-size: 24pt;
+  font-size: 42pt;
   font-style: italic;
   color: rgb(232, 232, 232);
   z-index: 2;
