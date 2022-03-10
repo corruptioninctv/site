@@ -46,9 +46,9 @@
             <div id="member-selection">
                 <a onclick="chooseMember(this)" id="member-itsfood"><img src="./profiles/itsfood.jpg"></a>
                 <a onclick="chooseMember(this)" id="member-alien"><img src="./profiles/alienislive.jpg"></a>
-                <a onclick="chooseMember(this)" id="member-pvppy"><img src="./profiles/pvppy.png"></a>
-                <a onclick="chooseMember(this)" id="member-freddie"><img src="./profiles/freddie.png"></a>
-                <a onclick="chooseMember(this)" id="member-nic"><img src="./profiles/nic.png"></a>
+                <a onclick="chooseMember(this)" id="member-pvppy"><img src="./profiles/pvppy.jpg"></a>
+                <a onclick="chooseMember(this)" id="member-freddie"><img src="./profiles/freddie.jpg"></a>
+                <a onclick="chooseMember(this)" id="member-nic"><img src="./profiles/nic.jpg"></a>
             </div>
         </div>
     </section>
@@ -183,7 +183,7 @@
         function chooseMember(e) {
             if (member.selector.chosen == e.id) return;
             member.selector.chosen = e.id
-            let data
+            let data;
             switch (e.id) {
                 case "member-itsfood":
                     data = member.info.member.itsfood
@@ -209,6 +209,7 @@
                     console.log(e)
                 }
                 member.selector.options.querySelector('a.active').classList.remove('active')
+                member.selector.options.classList.add('grayscale')
             }
             finally {
                 try {
@@ -218,13 +219,13 @@
                     member.about.m.textContent = data.about
                     member.profile.src = data.image
 
-                    member.bullets.d.querySelectorAll('*').forEach(n => n.remove())
+                    member.bullets.d.querySelectorAll('li').forEach(n => n.remove())
                     data.bullets.forEach((item) => {
                         let bullet = document.createElement('li')
                         bullet.textContent = item
-                        member.bullets.appendChild(bullet)
+                        member.bullets.d.appendChild(bullet)
                     })
-                    member.bullets.m.querySelectorAll('*').forEach(n => n.remove())
+                    member.bullets.m.querySelectorAll('li').forEach(n => n.remove())
                     data.bullets.forEach((item) => {
                         let bullet = document.createElement('li')
                         bullet.textContent = item
@@ -242,6 +243,7 @@
                         e.classList.add('active')
                         member.transition.classList.add('hidden')
                         member.section.classList.remove('hidden')
+                        member.selector.options.classList.remove('grayscale')
                     }, 600);
                 }
             }
