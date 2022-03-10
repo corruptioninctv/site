@@ -107,7 +107,7 @@ nav #home-link-sm {
   padding-top: 1rem;
   text-decoration: none !important;
 }
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   nav #home-link-sm {
     display: block;
   }
@@ -120,25 +120,36 @@ nav #home-link-sm {
 }
 
 /* Main */
-section#main {
-  margin: 5rem 2vw;
+section.container {
+  width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  section.container {
+    max-width: 540px;
+  }
 }
 
 @media (min-width: 768px) {
-  section#main {
-    margin: 5rem 5vw;
+  section.container {
+    max-width: 720px;
   }
 }
-
-@media (min-width: 1024px) {
-  section#main {
-    margin: 5rem 15vw;
+@media (min-width: 992px) {
+  section.container {
+    max-width: 960px;
   }
 }
-
 @media (min-width: 1200px) {
-  section#main {
-    margin: 5rem 20vw;
+  section.container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  section.container {
+    max-width: 1320px;
   }
 }
 
@@ -166,10 +177,10 @@ div#member-selection a.active img {
 }
 div#member-container {
   position: relative;
-  min-width: calc(200 * (4 / 3));
+  min-width: calc(200px * (4 / 3));
   min-height: 200px;
-  width: calc(80vh * (4 / 3));
-  height: 80vh;
+  width: calc(70vh * (4 / 3));
+  height: 70vh;
   padding: 2em;
   margin: 5px auto 15px auto;
   background: rgb(232, 232, 232);
@@ -193,8 +204,8 @@ div#member-transition {
   position: relative;
   min-width: calc(200 * (4 / 3));
   min-height: 200px;
-  width: calc(80vh * (4 / 3));
-  height: 80vh;
+  width: calc(70vh * (4 / 3));
+  height: 70vh;
   padding: 2em;
   margin: 5px auto 15px auto;
   /* overflow: hidden; */
@@ -211,13 +222,29 @@ div#member-transition {
   background-size: cover !important;
   animation: none !important;
 }
-@media (orientation: portrait) {
+
+/* (orientation: portrait) */
+@media (max-width: 990px) {
   div#member-transition,
   div#member-container {
     min-width: 0 !important;
     min-height: 0 !important;
     width: calc(50vw * (4 / 3)) !important;
     height: 50vw !important;
+  }
+  h1#member-name-m,
+  p#member-about-m,
+  ul#member-bullets-m {
+    display: inherit !important;
+    width: fit-content;
+    margin: 0 auto;
+    color: rgb(232, 232, 232) !important;
+  }
+  h1#member-name-m {
+    font-size: 18pt;
+  }
+  div#member-info {
+    display: none !important;
   }
 }
 div#member-transition:before {
@@ -303,6 +330,11 @@ div#member-display p#member-about,
 div#member-display ul#member-bullets {
   margin: 0;
   z-index: 2;
+}
+h1#member-name-m,
+p#member-about-m,
+ul#member-bullets-m {
+  display: none;
 }
 div img#member-image {
   position: absolute;

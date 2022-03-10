@@ -37,7 +37,7 @@
         </div>
     </nav>
 
-    <section id="main" class="text-center">
+    <section class="container" class="text-center">
         <div>
             <h1 class="title">Meet the Founders</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus tenetur nostrum, animi similique
@@ -52,16 +52,23 @@
             </div>
         </div>
     </section>
-    <div id="member-container">
-        <div id="member-display">
-            <img id="member-image">
-            <div id="member-info">
-                <h1 id="member-name"><i>choose your character</i></h1>
-                <p id="member-about"></p>
-                <ul id="member-bullets"></ul>
+    <section id="member">
+        <h1 id="member-name-m">choose your character</h1>
+        <div id="member-container">
+            <div id="member-display">
+                <img id="member-image">
+                <div id="member-info">
+                    <h1 id="member-name"><i>choose your character</i></h1>
+                    <p id="member-about"></p>
+                    <ul id="member-bullets"></ul>
+                </div>
             </div>
         </div>
-    </div>
+        <section class="container">
+            <p id="member-about-m"></p>
+            <ul id="member-bullets-m"></ul>
+        </section>
+    </section>
     <div id="member-transition" class="hidden">
         <!-- <video autoplay loop muted src="../assets/background/channelstatic.mp4">
         </video> -->
@@ -139,67 +146,89 @@
     </script>
     <!-- Member Selection -->
     <script>
-        let memberInfo;
-        const name = document.getElementById('member-name'),
-            about = document.getElementById('member-about'),
-            profile = document.getElementById('member-image'),
-            bullets = document.getElementById('member-bullets'),
-            selector = document.getElementById('member-selection'),
-            display = document.getElementById('member-display'),
-            container = document.getElementById('member-container'),
-            transition = document.getElementById('member-transition');
+        const member = {
+            "name": {
+                "d": document.getElementById('member-name'),
+                "m": document.getElementById('member-name-m')
+            },
+            "about": {
+                "d": document.getElementById('member-about'),
+                "m": document.getElementById('member-about-m')
+            },
+            "bullets": {
+                "d": document.getElementById('member-bullets'),
+                "m": document.getElementById('member-bullets-m')
+            },
+            "profile": document.getElementById('member-image'),
+            "selector": {
+                "options": document.getElementById('member-selection'),
+                "chosen": null
+            },
+            "display": document.getElementById('member-display'),
+            "container": document.getElementById('member-container'),
+            "transition": document.getElementById('member-transition'),
+            "section": document.getElementById('member'),
+            "info": null,
+        }
 
         fetch("data.json")
             .then(response => {
                 return response.json()
             })
             .then(data => {
-                memberInfo = data;
-                console.log(memberInfo)
+                member.info = data;
+                // console.log(member.info)
             })
 
-        let currentSelection;
         function chooseMember(e) {
-            if (currentSelection == e.id) return;
-            currentSelection = e.id
-            let data;
+            if (member.selector.chosen == e.id) return;
+            member.selector.chosen = e.id
+            let data
             switch (e.id) {
                 case "member-itsfood":
-                    data = memberInfo.member.itsfood
+                    data = member.info.member.itsfood
                     break;
                 case "member-alien":
-                    data = memberInfo.member.alien
+                    data = member.info.member.alien
                     break;
                 case "member-pvppy":
-                    data = memberInfo.member.pvppy
+                    data = member.info.member.pvppy
                     break;
                 case "member-freddie":
-                    data = memberInfo.member.freddie
+                    data = member.info.member.freddie
                     break;
                 case "member-nic":
-                    data = memberInfo.member.nic
+                    data = member.info.member.nic
                     break;
             }
             try {
-                container.classList.add('hidden')
+                member.section.classList.add('hidden')
                 try {
-                    transition.classList.remove('hidden')
+                    member.transition.classList.remove('hidden')
                 } catch (e) {
                     console.log(e)
                 }
-                selector.querySelector('a.active').classList.remove('active')
+                member.selector.options.querySelector('a.active').classList.remove('active')
             }
             finally {
                 try {
-                    name.textContent = data.name
-                    about.textContent = data.about
-                    profile.src = data.image
+                    member.name.d.textContent = data.name
+                    member.name.m.textContent = data.name
+                    member.about.d.textContent = data.about
+                    member.about.m.textContent = data.about
+                    member.profile.src = data.image
 
-                    bullets.querySelectorAll('*').forEach(n => n.remove())
+                    member.bullets.d.querySelectorAll('*').forEach(n => n.remove())
                     data.bullets.forEach((item) => {
                         let bullet = document.createElement('li')
                         bullet.textContent = item
-                        bullets.appendChild(bullet)
+                        member.bullets.appendChild(bullet)
+                    })
+                    member.bullets.m.querySelectorAll('*').forEach(n => n.remove())
+                    data.bullets.forEach((item) => {
+                        let bullet = document.createElement('li')
+                        bullet.textContent = item
+                        member.bullets.m.appendChild(bullet)
                     })
                 }
                 catch {
@@ -211,8 +240,8 @@
                 finally {
                     setTimeout(() => {
                         e.classList.add('active')
-                        transition.classList.add('hidden')
-                        container.classList.remove('hidden')
+                        member.transition.classList.add('hidden')
+                        member.section.classList.remove('hidden')
                     }, 600);
                 }
             }
