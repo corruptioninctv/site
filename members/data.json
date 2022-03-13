@@ -3,12 +3,12 @@
     "itsfood": {
       "name": "itsfood",
       "image": "./characters/itsfood.png",
-      "about": "About me here",
+      "about": "\"Hi! I'm itsfood. Currently, I play random games I find laying around in my library. I love making videos, and I upload them all to YouTube! I used to stream on Twitch, but have lost the time needed currently to continue that. I will start streaming again later in 2022! Check it out sometime, you just might enjoy! Subscribe :) (You can always unsub if you end up not enjoying it). Affiliate on 10/26/20!!\"",
       "bullets": [
         "Video Editor",
         "Designer",
         "Web Developer",
-        "Podcast Member"
+        "Podcast Manager"
       ],
       "website": "https://itsfood.xyz/"
     },
@@ -40,8 +40,9 @@
     "nic": {
       "name": "TwoDyslexic",
       "image": "./characters/nic.png",
-      "about": "About me here",
-      "websie": "https://www.twitch.tv/nic2496"
+      "about": "Casual Streamer, Funny Moments Man and Musician",
+      "bullets": ["Video Editor", "Actor", "Game Designer"],
+      "websie": "https://www.youtube.com/c/twodyslexic"
     }
   }
 }

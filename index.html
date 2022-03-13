@@ -89,12 +89,9 @@
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
                 e.preventDefault()
-                var link;
-                if (typeof e.explicitOriginalTarget === "undefined") {
-                    link = e.toElement.href
-                } else {
-                    link = e.explicitOriginalTarget.href
-                }
+                console.log(e);
+                var link = e.srcElement.href
+
                 // Test if page exists
                 var request;
                 if (window.XMLHttpRequest) {

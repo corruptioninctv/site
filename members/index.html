@@ -69,10 +69,9 @@
         </div>
         <section class="container">
             <p id="member-about-m"></p>
-            <ul id="member-bullets-m"></ul>
             <div id="member-notes-m">
                 <img src="../assets/addon/stickynote.png">
-                <ul id="member-bullets"></ul>
+                <ul id="member-bullets-m"></ul>
             </div>
         </section>
     </section>
@@ -128,12 +127,8 @@
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
                 e.preventDefault()
-                var link;
-                if (typeof e.explicitOriginalTarget === "undefined") {
-                    link = e.toElement.href
-                } else {
-                    link = e.explicitOriginalTarget.href
-                }
+                var link = e.srcElement.href
+
                 // Test if page exists
                 var request;
                 if (window.XMLHttpRequest) {

@@ -6,7 +6,11 @@
 /* Imports */
 @font-face {
   font-family: "tbf";
-  src: url("./assets/fonts/theboldfont.ttf");
+  src: url("./assets/fonts/theboldfont/theboldfont.ttf");
+}
+@font-face {
+  font-family: "hand";
+  src: url("./assets/fonts/shadowsintolight/shadowsintolight.ttf");
 }
 
 /* Utilities */
@@ -206,10 +210,11 @@ div#member-container:before {
 }
 div#member-notes {
   position: absolute;
-  width: 23vw;
+  width: 20vw;
   aspect-ratio: 1;
   z-index: 5;
-  right: 5vw;
+  margin-top: 48vh;
+  right: calc(30vw - 20%);
 }
 div#member-notes-m {
   display: none;
@@ -219,10 +224,10 @@ div#member-notes img {
   position: absolute;
   z-index: 5;
 }
-div#member-notes ul#member-bullets,
-div#member-notes-m ul#member-bullets-m {
+div#member-notes ul#member-bullets {
   color: rgb(15, 15, 12);
-  font-size: 1.5vw;
+  font-size: 1.7vw;
+  font-family: "hand", cursive;
   padding: 2rem 3.2rem;
   position: absolute;
   list-style: none;
@@ -239,7 +244,6 @@ div#member-transition {
   margin: 5px auto 15px auto;
   /* overflow: hidden; */
   border-radius: 50% / 10%;
-  background: lime;
   background-image: repeating-linear-gradient(white, black 5px);
   animation: tv-static 0.5s linear infinite;
   display: flex;
@@ -278,13 +282,24 @@ div#member-transition {
   }
   div#member-notes-m {
     display: inherit !important;
-    width: 50vw;
+    position: inherit !important;
+    width: 100vw;
     aspect-ratio: 1;
   }
   div#member-notes-m img {
-    width: 50%;
-    position: absolute;
+    width: 80%;
+    margin: 0 auto;
     z-index: 5;
+  }
+  div#member-notes-m ul#member-bullets-m {
+    color: rgb(15, 15, 12);
+    font-size: 5vw;
+    font-family: "hand", cursive;
+    padding: 2rem 3.2rem;
+    position: absolute;
+    list-style: none;
+    z-index: 10;
+    transform: rotate(-3.7deg);
   }
 }
 div#member-transition:before {
