@@ -127,21 +127,28 @@
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
                 e.preventDefault()
-                var link = e.srcElement.href
+                if (e.srcElement.classList.contains('active')) {
+                    console.log(e.srcElement.classList)
+                    return;
+                } else if (e.srcElement.id.includes('-ext')) {
+                    return;
+                } else {
+                    var link = e.srcElement.href
 
-                // Test if page exists
-                var request;
-                if (window.XMLHttpRequest) {
-                    request = new XMLHttpRequest()
-                } else {
-                    request = new ActiveXObject("Microsoft.XMLHTTP")
-                }
-                request.open('GET', `${link}`, false)
-                request.send();
-                if (request.status !== 404) {
-                    window.location.href = link
-                } else {
-                    alert(`link will navigate to ${link}.`)
+                    // Test if page exists
+                    var request;
+                    if (window.XMLHttpRequest) {
+                        request = new XMLHttpRequest()
+                    } else {
+                        request = new ActiveXObject("Microsoft.XMLHTTP")
+                    }
+                    request.open('GET', `${link}`, false)
+                    request.send();
+                    if (request.status !== 404) {
+                        window.location.href = link
+                    } else {
+                        alert(`link will navigate to ${link}.`)
+                    }
                 }
             })
         })

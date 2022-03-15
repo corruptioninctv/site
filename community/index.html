@@ -7,39 +7,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Styles -->
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../index.css">
     <!-- Safari Theme Color -->
     <meta name="theme-color" content="#0f0f0c">
 </head>
 
 <body>
     <video autoplay muted loop id="page-background">
-        <source src="./assets/background/background.mp4" type="video/mp4">
+        <source src="../assets/background/background.mp4" type="video/mp4">
     </video>
 
     <nav>
-        <a href="./" id="home-link-sm" class="text-crt">Corruption Inc</a>
+        <a href="../" id="home-link-sm" class="text-crt">Corruption Inc</a>
         <div class="nav-links">
-            <a href="./members/" id="memberslink">Members</a>
-            <a href="./contact/" id="contactlink">Contact</a>
-            <a href="./" id="home-link" class="text-crt">Corruption Inc</a>
-            <a href="./watch/" id="watchlink">Watch</a>
-            <a href="./community" id="communitylink">Community</a>
+            <a href="../members/" id="members-link">Members</a>
+            <a href="../contact/" id="contact-link">Contact</a>
+            <a href="../" id="home-link" class="text-crt">Corruption Inc</a>
+            <a href="../watch/" id="watch-link">Watch</a>
+            <a href="../community" id="community-link" class="active">Community</a>
         </div>
     </nav>
 
     <section class="container" class="text-center">
         <div>
-            <h1>Hello</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus tenetur nostrum, animi similique
-                obcaecati totam id rem commodi dicta quia repellendus, est et! Soluta sunt aut quae dolorum fugit ut.
+            <h1>Join The Crew</h1>
+            <p>Come join our Discord server, lorem ipsum dolor sit amet consectetur adipisicing elit. Amet provident,
+                consectetur necessitatibus aperiam aspernatur!
             </p>
-        </div>
-        <div>
-            <h1>Meet the Team</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt voluptatum porro, iste facilis tempora
-                reprehenderit itaque est magnam eaque, hic rerum aut totam excepturi, et doloremque. Ea recusandae est
-                impedit?</p>
+            <!-- <a href="https://discord.com/invite/6M7F63JzDA/" id="discord-ext" target="_blank">Tune In</a> -->
+            <a href="https://discord.corruption.live/" id="discord-ext" target="_blank">Tune In</a>
         </div>
     </section>
 
@@ -88,12 +84,14 @@
         let links = document.querySelectorAll('a[href]')
         links.forEach((link) => {
             link.addEventListener('click', function (e) {
-                e.preventDefault()
-                if (e.srcElement.id.includes('home-link')) {
+                if (e.srcElement.classList.contains('active')) {
+                    e.preventDefault()
+                    console.log(e.srcElement.classList)
                     return;
                 } else if (e.srcElement.id.includes('-ext')) {
-                    return;
+                    return
                 } else {
+                    e.preventDefault()
                     var link = e.srcElement.href
 
                     // Test if page exists
