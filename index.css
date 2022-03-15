@@ -288,14 +288,16 @@ div#member-transition {
   }
   div#member-notes-m img {
     width: 80%;
-    margin: 0 auto;
+    padding: 0 10%;
+    left: 0;
+    position: absolute;
     z-index: 5;
   }
   div#member-notes-m ul#member-bullets-m {
-    color: rgb(15, 15, 12);
-    font-size: 5vw;
+    color: rgb(15, 15, 12) !important;
+    font-size: 6.5vw;
     font-family: "hand", cursive;
-    padding: 2rem 3.2rem;
+    padding: 3rem 5rem;
     position: absolute;
     list-style: none;
     z-index: 10;
