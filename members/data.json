@@ -18,23 +18,18 @@
       "about": "\"Hey y'all, my name's Alien! I enjoy playing indie horror games and other weird, non-mainstream games. I also rap, voice act, stream, video edit, and host my own podcast called \"The Editors' Lounge\". People know me for my out of pocket humor, cracked gaming moments, and random nonsensical bulls**t I say during stream. I’m also an expert on women, so be sure to ask me for advice, and I will teach you the ways of understanding the wonders of the female mind. Anyways, I’m gonna go back to saying random nonsensical bulls**t on social media. Catch ya later!\"",
       "bullets": [
         "Rapper/Producer",
-        "Amateur Voice Actor",
+        "Voice Actor",
         "Content Creator",
         "Podcast Creator",
         "Video Editor"
       ],
       "websie": "https://twitch.tv/ALIENisSCARED"
     },
-    "pvppy": {
-      "name": "pvppyspit",
-      "image": "./characters/pvppy.png",
-      "about": "\"Hi, I'm Puppy! I love MMOs and cozy, relaxing games like Stardew Valley, Minecraft, and Animal Crossing. Although I am always down to try something new, I prefer my cozy games. I love meeting new people to play with, and I also love learning new things. My streaming goal is to make people happy, smile, and have a break from the world. I want to give other people comfort and security in my streams. It would be cool to make this my full-time career, but that ultimately isn't my goal. My goal is to provide happiness, just like the streamers/YouTubers I watched when I was a kid. Also, I really love dinosaurs and space and everything to do with animals. So, if you have any cool facts, I'd love to hear them. Learning is my passion. ❤️ Thanks for reading this. ❤️\"",
-      "websie": "https://twitch.tv/pvppyspit"
-    },
     "freddie": {
       "name": "superfreddie_",
       "image": "./characters/freddie.png",
       "about": "About me here",
+      "bullets": [],
       "websie": "https://www.twitch.tv/superfreddie_"
     },
     "nic": {

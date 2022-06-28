@@ -46,7 +46,6 @@
             <div id="member-selection">
                 <a onclick="chooseMember(this)" id="member-itsfood"><img src="./profiles/itsfood.jpg"></a>
                 <a onclick="chooseMember(this)" id="member-alien"><img src="./profiles/alienislive.jpg"></a>
-                <a onclick="chooseMember(this)" id="member-pvppy"><img src="./profiles/pvppy.jpg"></a>
                 <a onclick="chooseMember(this)" id="member-freddie"><img src="./profiles/freddie.jpg"></a>
                 <a onclick="chooseMember(this)" id="member-nic"><img src="./profiles/nic.jpg"></a>
             </div>
@@ -200,9 +199,6 @@
                 case "member-alien":
                     data = member.info.member.alien
                     break;
-                case "member-pvppy":
-                    data = member.info.member.pvppy
-                    break;
                 case "member-freddie":
                     data = member.info.member.freddie
                     break;
@@ -228,18 +224,27 @@
                     member.about.m.textContent = data.about
                     member.profile.src = data.image
 
+                    member.bullets.d.classList.remove('hidden');
+                    member.bullets.m.classList.remove('hidden');
                     member.bullets.d.querySelectorAll('li').forEach(n => n.remove())
-                    data.bullets.forEach((item) => {
-                        let bullet = document.createElement('li')
-                        bullet.textContent = item
-                        member.bullets.d.appendChild(bullet)
-                    })
                     member.bullets.m.querySelectorAll('li').forEach(n => n.remove())
-                    data.bullets.forEach((item) => {
-                        let bullet = document.createElement('li')
-                        bullet.textContent = item
-                        member.bullets.m.appendChild(bullet)
-                    })
+                    console.log(data.bullets, data.bullets.length)
+                    if (data.bullets.length > 0) {
+                        data.bullets.forEach((item) => {
+                            let bullet = document.createElement('li')
+                            bullet.textContent = item
+                            member.bullets.d.appendChild(bullet)
+                        })
+                        data.bullets.forEach((item) => {
+                            let bullet = document.createElement('li')
+                            bullet.textContent = item
+                            member.bullets.m.appendChild(bullet)
+                        })
+                    } else {
+                        console.log('oh dear, there were no bullets to bullet.')
+                        member.bullets.d.classList.add('hidden');
+                        member.bullets.m.classList.add('hidden');
+                    }
                 }
                 catch {
                     (oops) => {
